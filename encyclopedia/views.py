@@ -52,14 +52,13 @@ def create_page(request):
     else:
         title = request.POST["title"]
         content = request.POST["content"]
-        if title is None:
-            return render(request, "encyclopedia/error.html", {
-                "error2": "Enter a title",
-                "title": title
+
+        if not title:
+            return render(request, "encyclopedia/create.html", {
+                "error": "Title is required"
             })
 
         entry = util.get_entry(title)
-
         if entry is not None:
             return render(request, "encyclopedia/error.html", {
                 "error2": "already exists.",
@@ -68,10 +67,6 @@ def create_page(request):
         else:
             util.save_entry(title, content)
             return redirect("entry", title=title)
-            # return render(request, "encyclopedia/entry.html", {
-            #     "entry": entry,
-            #     "title": title.upper()
-            # })
 
 def edit(request):
     if request.method == "POST":

@@ -49,12 +49,14 @@ textarea {
     height: auto;
 } */
 
-
-
 .sidebar img {
     max-width: 100%;
     height: auto;
     width: 80%;
     display: block;
     margin: 0 auto;
+}
+
+.error {
+    color: red;
 }

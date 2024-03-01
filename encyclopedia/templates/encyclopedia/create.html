@@ -7,11 +7,18 @@
 {% block body %}
     <h1>New Page</h1>
 
+
+
     <form action="{% url 'create' %}" method="POST">
         {% csrf_token %}
         <label>Title:</label>
         <br>
         <input type="text" name="title" placeholder="Enter a title">
+
+        {% if error %}
+            <span class="error">{{ error }}</span>
+        {% endif %}
+
         <br>
         <br>
         <label>Content:</label>
