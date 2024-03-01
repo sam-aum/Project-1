@@ -7,10 +7,16 @@
 {% block body %}
     <h1>Search results for "{{ query }}"</h1>
 
+    <hr>
+
     <ul>
         {% for entry in results %}
             <li><a href="{% url 'entry' title=entry %}">{{ entry }}</a></li>
         {% endfor %}
+
+        {% if not results %}
+            <li>No results were found. Please try your search again.</li>
+        {% endif %}
     </ul>
 
 {% endblock %}

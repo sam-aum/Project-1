@@ -13,7 +13,7 @@ def index(request):
 def entry(request, title):
     entry = markdown_change(title)
  
-    if entry == None:
+    if entry is None:
         return render(request, "encyclopedia/error.html", {
             "error": "does not exist.",
             "title": title
@@ -96,5 +96,7 @@ def rand(request):
 
 def markdown_change(title):
     content = util.get_entry(title)
+    if content is None:
+        return None
     markdowner = Markdown()
     return markdowner.convert(content)
