@@ -30,10 +30,7 @@ def search(request):
         
         entry = util.get_entry(query)
         if entry != None:
-            return render(request, "encyclopedia/entry.html", {
-                "entry": entry,
-                "title": query.upper()
-            })
+            return redirect("entry", title=query)
         else:
             entries = util.list_entries()
             results = []
@@ -50,7 +47,7 @@ def create_page(request):
     if request.method == "GET":
         return render(request, "encyclopedia/create.html")
     else:
-        title = request.POST["title"]
+        title = request.POST["title"].upper()
         content = request.POST["content"]
 
         if not title:
