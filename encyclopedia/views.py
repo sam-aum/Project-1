@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from . import util
 from markdown2 import Markdown
 import random
+
 
 
 def index(request):
@@ -10,7 +11,8 @@ def index(request):
     })
 
 def entry(request, title):
-    entry = util.get_entry(title)
+    entry = markdown_change(title)
+ 
     if entry == None:
         return render(request, "encyclopedia/error.html", {
             "error": "does not exist.",
@@ -78,16 +80,17 @@ def save_edit(request):
     # content = ' '.join(content.split())
 
     util.save_entry(title, content)
-    return render(request, "encyclopedia/entry.html", {
-        "title": title,
-        "entry": content
-    })
+    return redirect("entry", title=title)
 
 
 def rand(request):
     entries = util.list_entries()
-    random_entry = random.choice(entries)
-    entry = util.get_entry(random_entry)
-    return render(request, "encyclopedia/entry.html", {
-        "entry": entry
-    })
+    random_title = random.choice(entries)
+    entry = util.get_entry(random_title)
+    return redirect("entry", title=random_title)
+
+
+def markdown_change(title):
+    content = util.get_entry(title)
+    markdowner = Markdown()
+    return markdowner.convert(content)
