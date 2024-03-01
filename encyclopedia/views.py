@@ -98,5 +98,11 @@ def markdown_change(title):
     content = util.get_entry(title)
     if content is None:
         return None
-    markdowner = Markdown()
-    return markdowner.convert(content)
+    
+    if title == "MAPLE":
+        content_with_image = f"{content}\n\n![maple](/static/images/maple.jpg)"
+        markdowner = Markdown()
+        return markdowner.convert(content_with_image)
+    else:
+        markdowner = Markdown()
+        return markdowner.convert(content)

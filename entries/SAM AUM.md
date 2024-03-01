@@ -1,5 +1,5 @@
 # Sam Aum
-
+___
 ## Profile
 Self-motivated and fast-learning software engineer with a previous 15 year professional
 pastoral experience leading teams and achieving goals. Offers creative problem-solving

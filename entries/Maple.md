@@ -1,9 +1,10 @@
-# Maple
-
-## Description:
-Sam's dog
-
-## Breed
-Half chihuahua
-
-![Maple]("C:\Users\samia\OneDrive\CS50W\Project1\encyclopedia\static\encyclopedia\Maple.JPG")
+# Maple
+___
+## Name:
+Maple Magnolia Aum
+
+## Description:
+Sam's dog.  Loves bacon, naps, and belly rubs.
+
+## Breed
+Half chihuahua
